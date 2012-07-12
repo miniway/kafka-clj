@@ -1,21 +1,28 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<project xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd" xmlns="http://maven.apache.org/POM/4.0.0"
-    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.0.xsd">
   <modelVersion>4.0.0</modelVersion>
-  <groupId>kafka-clj</groupId>
+  <groupId>kafka.client</groupId>
   <artifactId>kafka-clj</artifactId>
+  <packaging>jar</packaging>
   <version>0.1.0-SNAPSHOT</version>
   <name>kafka-clj</name>
   <description>Kafka client for Clojure.</description>
   <url>http://sna-projects.com/kafka/</url>
+  <licenses>
+    <license>
+      <name>The Apache Software License, Version 2.0</name>
+      <url>http://www.apache.org/licenses/LICENSE-2.0.txt</url>
+      <distribution>repo</distribution>
+    </license>
+  </licenses>
   <scm>
     <connection>scm:git:git://github.com/miniway/kafka-clj.git</connection>
     <developerConnection>scm:git:ssh://git@github.com/miniway/kafka-clj.git</developerConnection>
-    <tag>13b2f6d515b664c2bf3a8f260b4d0410df9a5037</tag>
+    <tag>64e940bfa01d0980033eab9ac4c7cbabdee9a795</tag>
     <url>https://github.com/miniway/kafka-clj</url>
   </scm>
   <build>
-    <sourceDirectory>src</sourceDirectory>
+    <sourceDirectory>src/clj</sourceDirectory>
     <testSourceDirectory>test</testSourceDirectory>
     <resources>
       <resource>
@@ -24,18 +31,35 @@
     </resources>
     <testResources>
       <testResource>
-        <directory>test-resources</directory>
+        <directory>dev-resources</directory>
+      </testResource>
+      <testResource>
+        <directory>resources</directory>
       </testResource>
     </testResources>
+    <directory>target</directory>
+    <outputDirectory>target/classes</outputDirectory>
   </build>
   <repositories>
     <repository>
       <id>central</id>
       <url>http://repo1.maven.org/maven2</url>
+      <snapshots>
+        <enabled>true</enabled>
+      </snapshots>
+      <releases>
+        <enabled>true</enabled>
+      </releases>
     </repository>
     <repository>
       <id>clojars</id>
-      <url>http://clojars.org/repo/</url>
+      <url>https://clojars.org/repo/</url>
+      <snapshots>
+        <enabled>true</enabled>
+      </snapshots>
+      <releases>
+        <enabled>true</enabled>
+      </releases>
     </repository>
   </repositories>
   <dependencies>
@@ -52,7 +76,7 @@
     <dependency>
       <groupId>com.googlecode.disruptor</groupId>
       <artifactId>disruptor</artifactId>
-      <version>2.10</version>
+      <version>2.10.1</version>
     </dependency>
     <dependency>
       <groupId>com.netflix.curator</groupId>
@@ -65,20 +89,20 @@
       <version>1.2.15</version>
       <exclusions>
         <exclusion>
-          <artifactId>mail</artifactId>
           <groupId>javax.mail</groupId>
+          <artifactId>mail</artifactId>
         </exclusion>
         <exclusion>
-          <artifactId>jms</artifactId>
           <groupId>javax.jms</groupId>
+          <artifactId>jms</artifactId>
         </exclusion>
         <exclusion>
-          <artifactId>jmxtools</artifactId>
           <groupId>com.sun.jdmk</groupId>
+          <artifactId>jmxtools</artifactId>
         </exclusion>
         <exclusion>
-          <artifactId>jmxri</artifactId>
           <groupId>com.sun.jmx</groupId>
+          <artifactId>jmxri</artifactId>
         </exclusion>
       </exclusions>
     </dependency>

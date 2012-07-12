@@ -35,7 +35,7 @@
 )
 
 (defn dummy-zk 
-  [conf & [opts]]
+  [conn-str & {:keys [connection-timeout session-timeout watcher]}]
   (let [zk
     (reify
       CuratorFramework
@@ -91,7 +91,7 @@
 
 (def pv-topic-flatten (ns-resolve 'kafka.kafka 'topic-flatten))
 (def pv-add-topic-partition (ns-resolve 'kafka.kafka 'add-topic-partition))
-(def pv-get-zk-brokers (ns-resolve 'kafka.kafka 'get-zk-brokers))
+(def pv-get-zk-brokers (ns-resolve 'kafka.kafka 'get-brokers))
 
 (deftest test-topic-flatten
   (is (= (seq [(seq ["topic" -1 ["hello"]])]) (doall (pv-topic-flatten {"topic" {-1 ["hello"]}}))))

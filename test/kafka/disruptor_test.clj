@@ -15,7 +15,7 @@
   (when (even? (.getKey evt)) (println "even-event" (.getName (Thread/currentThread)) evt sequence end)))
 
 (deftest disruptor-processor
-  (let [disruptor (new-disruptor handler :factory-options [100])
+  (let [disruptor (new-disruptor handler)
         _ (start disruptor)
         ring-buffer (get-ring-buffer disruptor)
         retry 100
@@ -30,7 +30,7 @@
     ))
 
 (deftest disruptor-multi-consume
-  (let [disruptor (new-disruptor [handler-odd handler-even] :factory-options [100])
+  (let [disruptor (new-disruptor [handler-odd handler-even])
         _ (start disruptor)
         ring-buffer (get-ring-buffer disruptor)
         retry 100
@@ -43,7 +43,7 @@
     (stop disruptor)))
 
 (deftest disruptor-batch-publish
-  (let [disruptor (new-disruptor [handler-odd handler-even] :factory-options [100])
+  (let [disruptor (new-disruptor [handler-odd handler-even])
         _ (start disruptor)
         ring-buffer (get-ring-buffer disruptor)
         retry 100

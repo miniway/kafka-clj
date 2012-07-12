@@ -26,6 +26,8 @@
   (invoke [this a b c] (capture-invoke this [a b c]))
   (invoke [this a b c d] (capture-invoke this [a b c d]))
   (invoke [this a b c d e] (capture-invoke this [a b c d e]))
+  (invoke [this a b c d e f] (capture-invoke this [a b c d e f]))
+  (invoke [this a b c d e f g] (capture-invoke this [a b c d e f g]))
   (applyTo [this args]
     (clojure.lang.AFn/applyToHelper this args)))
 

@@ -46,7 +46,6 @@ Following options are supported:
 * :broker.type _string_ [sync|async|batch] default : sync
 * :partitioner _function_ Partitioner function whchi accepts two arguments (partition-key num-partition). Default is random partition.
 
-
 ### Simple consumer (will be deprecated)
 
     (with-open [c (consumer "localhost" 9092)]
@@ -67,3 +66,17 @@ Following options are supported:
 * :offset   _long_ initialized to highest offset if not provided.
 * :max-size _int_  max result message size, default 1000000.
 
+### Java Interop
+
+   Properties props = new Properties();
+   props.put("zk.connect", "localhost:2181");
+   props.put("multithread", "true");
+   kafka.types.Producer producer = kafka.kafka.newProducer(props);
+
+   List<String> messages = new java.util.ArrayList<String>();
+   messages.add("hello")
+   messages.add("world")
+   producer.produce("topic", messages);
+           
+   producer.close();
+           
